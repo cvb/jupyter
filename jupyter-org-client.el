@@ -1649,7 +1649,7 @@ Assumes `point' is on the #+RESULTS keyword line."
         (goto-char (jupyter-org-element-begin-after-affiliated context))
         (when (looking-at-p (format "^[ \t]*%s[ \t]*$" org-link-bracket-re))
           (setq context (org-element-context)))))
-    context))
+    (org-element-resolve-deferred context)))
 
 (defun jupyter-org--do-insert-result (req result)
   (pcase-let (((cl-struct jupyter-org-request
